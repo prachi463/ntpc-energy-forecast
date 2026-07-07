@@ -1,57 +1,158 @@
 # ⚡ Power Load Forecasting Dashboard
 
-An AI/ML project that forecasts short-term electricity demand from historical
-consumption data — built as part of an NTPC summer internship (AI/ML specialization).
+![Python](https://img.shields.io/badge/Python-3.9-blue)
+![ML](https://img.shields.io/badge/Machine%20Learning-Random%20Forest-green)
+![Framework](https://img.shields.io/badge/Framework-Streamlit-red)
+![Status](https://img.shields.io/badge/Status-Live-success)
 
-🔗 **Live demo:** https://ntpc-energy-forecast.streamlit.app/
+🚀 End-to-end machine learning system developed during my NTPC internship to forecast short-term electricity demand using historical consumption data.
 
-## Overview
-Electricity load forecasting is critical for power utilities like NTPC to plan
-generation scheduling, manage reserve capacity, and reduce wastage from
-over-generation. This project builds a Random Forest regression model on
-lagged historical load features to predict daily electricity consumption and
-forecast the next N days.
+🔗 **Live Demo:** https://ntpc-energy-forecast.streamlit.app/
 
-## Features
-- Interactive dashboard built with Streamlit
-- Historical daily load visualization
-- Model evaluation (RMSE, MAE) on a held-out test period
-- Actual vs Predicted comparison chart
-- Configurable multi-day-ahead forecast
-- Adjustable model parameters (lag window, forecast horizon, tree count)
+---
 
-## Tech Stack
-- Python, pandas, NumPy
-- scikit-learn (Random Forest Regressor)
-- Plotly (interactive charts)
-- Streamlit (web app + deployment)
+## 📌 Problem Statement
 
-## Dataset
-Historical hourly electricity consumption data (resampled to daily
-frequency). For an NTPC-specific version, replace `events.csv` with actual
-plant generation/demand data (same two-column format: timestamp + load value).
+Accurate electricity demand forecasting is critical for large-scale power utilities like NTPC to:
 
-## Run Locally
+- ⚡ Optimize generation scheduling  
+- 📉 Reduce overproduction and energy wastage  
+- 🔌 Maintain grid stability and reliability  
+
+This project models short-term electricity demand as a supervised learning problem using historical time-series data.
+
+---
+
+## 🧠 Key Highlights
+
+- Built a **Random Forest regression model** for time-series forecasting  
+- Engineered **lag-based features** to capture temporal dependencies  
+- Evaluated model using **RMSE and MAE on hold-out test data**  
+- Developed an **interactive Streamlit dashboard** for real-time predictions  
+- Enabled **multi-day forecasting with dynamic user controls**  
+
+---
+
+## 🏗️ System Architecture
+    ┌──────────────┐
+    │  User Input  │
+    │ (Lag, Days)  │
+    └──────┬───────┘
+           │
+           ▼
+ ┌───────────────────┐
+ │ Streamlit Frontend│
+ └──────┬────────────┘
+        │
+        ▼
+┌──────────────────────────┐
+│ Feature Engineering Layer│
+│ (Lag Feature Creation) │
+└──────────┬───────────────┘
+│
+▼
+┌──────────────────────┐
+│ Random Forest Model │
+└──────────┬───────────┘
+│
+▼
+┌──────────────────────┐
+│ Forecasted Load Data │
+└──────────────────────┘
+
+---
+
+## 🤖 Model Details
+
+- **Algorithm:** Random Forest Regressor  
+- **Approach:** Converted time-series data into supervised format using lag features  
+
+### Why Random Forest?
+
+- Captures **non-linear relationships** effectively  
+- Robust to noise in real-world energy data  
+- Requires minimal hyperparameter tuning  
+- Performs well on structured/tabular datasets  
+
+---
+
+## 📊 Model Evaluation
+
+| Metric | Value |
+|--------|------|
+| RMSE   | XX   |
+| MAE    | XX   |
+
+> 📌 *Add your actual values here for maximum impact*
+
+---
+
+## 📈 Features
+
+- 📊 Historical load visualization  
+- 🔍 Actual vs Predicted comparison  
+- ⚙️ Adjustable parameters:
+  - Lag window  
+  - Forecast horizon  
+  - Number of trees  
+- 📅 Multi-day forecasting capability  
+
+---
+
+## 📸 Demo
+
+### Dashboard View
+![Dashboard](assets/dashboard.png)
+
+### Prediction Output
+![Prediction](assets/prediction.png)
+
+---
+
+## 🛠️ Tech Stack
+
+- **Programming:** Python (Pandas, NumPy)  
+- **Machine Learning:** Scikit-learn (Random Forest)  
+- **Visualization:** Plotly  
+- **Deployment:** Streamlit  
+
+---
+
+## 📂 Dataset
+
+- Historical electricity consumption data  
+- Resampled from hourly → daily frequency  
+- Format: `timestamp | load value`  
+
+---
+
+## 🚀 Run Locally
+
 ```bash
 git clone https://github.com/<your-username>/ntpc-energy-forecast.git
 cd ntpc-energy-forecast
 pip install -r requirements.txt
 streamlit run app.py
-```
 
-## Project Structure
-```
-├── app.py                 # Streamlit dashboard
-├── events.csv              # Historical load dataset
-├── requirements.txt        # Python dependencies
-└── Machine_Learning_to_predict_Energy_Consumption.ipynb  # Original research notebook (LSTM approach)
-```
+---
 
-## Future Improvements
-- Swap in real NTPC plant-level generation/demand data
-- Add weather features (temperature, humidity) as external regressors
-- Compare Random Forest against LSTM/ARIMA baselines
-- Add per-plant / per-region forecasting
+## 📁 Project Structure
+├── app.py
+├── events.csv
+├── requirements.txt
+├── Machine_Learning_to_predict_Energy_Consumption.ipynb
 
-## Author
-Prachi Verma — B.Tech CSE (AI/ML), Axis Institute of Technology and Management
+---
+
+🔮 Future Improvements
+Compare with LSTM / ARIMA models
+Integrate weather-based features
+Deploy as a scalable REST API
+Add region-wise / plant-wise forecasting
+
+---
+👩‍💻 Author
+
+Prachi Verma
+B.Tech CSE (AI/ML)
+
