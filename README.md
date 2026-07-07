@@ -3,7 +3,7 @@
 An AI/ML project that forecasts short-term electricity demand from historical
 consumption data — built as part of an NTPC summer internship (AI/ML specialization).
 
-🔗 **Live demo:** _add your Streamlit Cloud link here after deployment_
+🔗 **Live demo:** https://ntpc-energy-forecast.streamlit.app/
 
 ## Overview
 Electricity load forecasting is critical for power utilities like NTPC to plan
