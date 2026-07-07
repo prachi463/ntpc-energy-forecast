@@ -34,31 +34,67 @@ This project models short-term electricity demand as a supervised learning probl
 ---
 
 ## 🏗️ System Architecture
-    ┌──────────────┐
-    │  User Input  │
-    │ (Lag, Days)  │
-    └──────┬───────┘
-           │
-           ▼
- ┌───────────────────┐
- │ Streamlit Frontend│
- └──────┬────────────┘
-        │
-        ▼
-┌──────────────────────────┐
-│ Feature Engineering Layer│
-│ (Lag Feature Creation) │
-└──────────┬───────────────┘
-│
-▼
-┌──────────────────────┐
-│ Random Forest Model │
-└──────────┬───────────┘
-│
-▼
-┌──────────────────────┐
-│ Forecasted Load Data │
-└──────────────────────┘
+                    ┌──────────────────────────────┐
+                    │        User Interface        │
+                    │      (Streamlit Dashboard)   │
+                    └──────────────┬───────────────┘
+                                   │
+                                   ▼
+                    ┌──────────────────────────────┐
+                    │        User Inputs           │
+                    │  - Forecast Horizon (Days)   │
+                    │  - Lag Window Size           │
+                    │  - Model Parameters          │
+                    └──────────────┬───────────────┘
+                                   │
+                                   ▼
+                    ┌──────────────────────────────┐
+                    │      Data Preprocessing      │
+                    │  - Load CSV Data             │
+                    │  - Handle Missing Values     │
+                    │  - Resample (Hourly → Daily) │
+                    └──────────────┬───────────────┘
+                                   │
+                                   ▼
+                    ┌──────────────────────────────┐
+                    │   Feature Engineering Layer  │
+                    │  - Lag Feature Creation      │
+                    │  - Time-based Features       │
+                    └──────────────┬───────────────┘
+                                   │
+                                   ▼
+                    ┌──────────────────────────────┐
+                    │   Machine Learning Model     │
+                    │  Random Forest Regressor     │
+                    └──────────────┬───────────────┘
+                                   │
+                                   ▼
+                    ┌──────────────────────────────┐
+                    │     Model Evaluation         │
+                    │   - RMSE                     │
+                    │   - MAE                      │
+                    └──────────────┬───────────────┘
+                                   │
+                                   ▼
+                    ┌──────────────────────────────┐
+                    │   Forecast Generation        │
+                    │  - Multi-step Prediction     │
+                    │  - Future Load Estimation    │
+                    └──────────────┬───────────────┘
+                                   │
+                                   ▼
+                    ┌──────────────────────────────┐
+                    │     Visualization Layer      │
+                    │  - Actual vs Predicted Graph │
+                    │  - Forecast Plot             │
+                    └──────────────┬───────────────┘
+                                   │
+                                   ▼
+                    ┌──────────────────────────────┐
+                    │        Final Output          │
+                    │   Interactive Insights       │
+                    │   + Future Predictions       │
+                    └──────────────────────────────┘  
 
 ---
 
@@ -76,17 +112,6 @@ This project models short-term electricity demand as a supervised learning probl
 
 ---
 
-## 📊 Model Evaluation
-
-| Metric | Value |
-|--------|------|
-| RMSE   | XX   |
-| MAE    | XX   |
-
-> 📌 *Add your actual values here for maximum impact*
-
----
-
 ## 📈 Features
 
 - 📊 Historical load visualization  
@@ -96,16 +121,6 @@ This project models short-term electricity demand as a supervised learning probl
   - Forecast horizon  
   - Number of trees  
 - 📅 Multi-day forecasting capability  
-
----
-
-## 📸 Demo
-
-### Dashboard View
-![Dashboard](assets/dashboard.png)
-
-### Prediction Output
-![Prediction](assets/prediction.png)
 
 ---
 
